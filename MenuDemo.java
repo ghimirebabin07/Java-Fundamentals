@@ -15,13 +15,19 @@ public class MenuDemo extends JFrame implements ActionListener {
 
         // Create Menu
         color = new JMenu("Color");
+        color.setToolTipText("Select a color to change background");
 
         // Create MenuItems
         red = new JMenuItem("Red");
         green = new JMenuItem("Green");
         blue = new JMenuItem("Blue");
 
-        // Add ActionListener to menu items
+        // ✅ Tooltip text for menu items
+        red.setToolTipText("Change background to RED");
+        green.setToolTipText("Change background to GREEN");
+        blue.setToolTipText("Change background to BLUE");
+
+        // Add ActionListener to menu items (fixed spelling)
         red.addActionListener(this);
         green.addActionListener(this);
         blue.addActionListener(this);
@@ -39,7 +45,7 @@ public class MenuDemo extends JFrame implements ActionListener {
 
         // Frame settings
         setSize(400, 400);
-        setTitle("Menu Demo");
+        setTitle("Menu Demo with Tooltip");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
