@@ -3,6 +3,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "InetExample",
+      "request": "launch",
+      "mainClass": "InetExample",
+      "projectName": "Java_Workshop_d6fc192b"
+    },
+    {
+      "type": "java",
+      "name": "InnetExample",
+      "request": "launch",
+      "mainClass": "InnetExample",
+      "projectName": "Java_Workshop_d6fc192b"
+    },
+    {
+      "type": "java",
       "name": "Run EmailValidationFX (JavaFX)",
       "request": "launch",
       "mainClass": "EmailValidationFX",

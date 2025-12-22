@@ -10,39 +10,45 @@ public class EmailValidationFX extends Application {
     @Override
     public void start(Stage stage) {
 
-        // Label
         Label title = new Label("Email Validation");
 
-        // TextField for email input
         TextField emailField = new TextField();
         emailField.setPromptText("Enter your email address");
 
-        // Button
         Button validateButton = new Button("Validate");
 
-        // Label to show result
         Label resultLabel = new Label();
 
-        // Button action
         validateButton.setOnAction(e -> {
-            String email = emailField.getText();
+            String email = emailField.getText().trim();
 
-            if (email.contains("@") && email.contains(".com")) {
-                resultLabel.setText("✅ Valid Email Address");
+            String gmailRegex = "^[a-zA-Z0-9._%+-]+@gmail\\.com$";
+            String yahooRegex = "^[a-zA-Z0-9._%+-]+@yahoo\\.com$";
+            String eduRegex   = "^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\\.)*edu\\.np$";
+
+            if (email.matches(gmailRegex)) {
+                resultLabel.setText(" Valid Gmail Address");
                 resultLabel.setStyle("-fx-text-fill: green;");
-            } else {
-                resultLabel.setText("❌ Invalid Email Address");
+            }
+            else if (email.matches(yahooRegex)) {
+                resultLabel.setText(" Valid Yahoo Address");
+                resultLabel.setStyle("-fx-text-fill: green;");
+            }
+            else if (email.matches(eduRegex)) {
+                resultLabel.setText(" Valid College / EDU.NP Address");
+                resultLabel.setStyle("-fx-text-fill: green;");
+            }
+            else {
+                resultLabel.setText(" Invalid Email Address");
                 resultLabel.setStyle("-fx-text-fill: red;");
             }
         });
 
-        // Layout
         VBox root = new VBox(10);
         root.setPadding(new Insets(20));
         root.getChildren().addAll(title, emailField, validateButton, resultLabel);
 
-        // Scene
-        Scene scene = new Scene(root, 350, 200);
+        Scene scene = new Scene(root, 360, 200);
 
         stage.setTitle("Email Validator");
         stage.setScene(scene);
