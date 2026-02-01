@@ -6,40 +6,28 @@ import java.io.Console;
 
 public class DatabaseConnection {
 
-    public static Connection getConnection() {
-        Connection con = null;
+    public static Connection getConnection() throws Exception {
 
-        try {
-            Console console = System.console();
-
-            if (console == null) {
-                System.out.println("Run this from terminal, not IDE Run button");
-                return null;
-            }
-
-            String user = console.readLine("Enter DB Username: ");
-            char[] passwordArray = console.readPassword("Enter DB Password: ");
-            String password = new String(passwordArray);
-
-            Class.forName("org.postgresql.Driver");
-
-            con = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/college_db",
-                user,
-                password
-            );
-
-            System.out.println(" Database connected successfully");
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        Console console = System.console();
+        if (console == null) {
+            throw new Exception("Run this program from terminal, not IDE");
         }
 
-        return con;
+        String user = console.readLine("Enter DB Username: ");
+        char[] passwordArray = console.readPassword("Enter DB Password: ");
+        String password = new String(passwordArray);
+
+        Class.forName("org.postgresql.Driver");
+
+        return DriverManager.getConnection(
+            "jdbc:postgresql://localhost:5432/college_db",
+            user,
+            password
+        );
     }
 
-    // MAIN METHOD (this fixes your error)
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         getConnection();
+        System.out.println("Database connected successfully");
     }
 }
