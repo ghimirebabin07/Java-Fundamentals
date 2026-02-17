@@ -11,7 +11,7 @@ public class ATMLogin extends JFrame implements ActionListener {
 
     public ATMLogin() {
         setTitle("ATM Login System");
-        setSize(350, 200);
+        setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); 
 
